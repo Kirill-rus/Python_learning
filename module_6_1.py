@@ -2,56 +2,49 @@
 
 
 class Animal: # Класс "животное".
+    alive: bool = True # Свойства класса.
+    fed: bool = False
     def __new__(cls, *args, **kwargs):
         return object.__new__(cls)
 
     def __init__(self, name, alive :bool = True, fed :bool = True):
-        self.name = name
+        self.name = name # Свойства экземпляра.
         self.alive = alive
         self.fed = fed
 
+    def eat(self, food):
+        if food.edible:
+            print(f'{self.name} съел {food.name}.')
+            self.fed = True
+        else:
+            print(f'{self.name} не стал есть {food.name}.')
+            self.alive = False
 
 
 class Plant: # Класс "растение".
+    edible: bool = False # Свойства класса.
     def __new__(cls, *args, **kwargs):
         return object.__new__(cls)
 
-    def __init__(self, name, edible: bool = False):
-        self.name = name
-        self.edible = edible
-
+    def __init__(self, name):
+        self.name = name  # Свойства экземпляра.
 
 
 class Mammal(Animal): # Подкласс "травоядное".
     def __new__(cls, *args, **kwargs):
         return object.__new__(cls)
 
-    def eat(self, food):
-        if food.edible == True:
-            print(f'{self.name} съел {food.name}.')
-            self.fed = True
-        else:
-            print(f'{self.name} не стал есть {food.name}.')
-            self.alive = False
-
 
 class Predator(Animal): # Подкласс "хищник".
     def __new__(cls, *args, **kwargs):
         return object.__new__(cls)
 
-    def eat(self, food):
-        if food.edible == True:
-            print(f'{self.name} съел {food.name}.')
-            self.fed = True
-        else:
-            print(f'{self.name} не стал есть {food.name}.')
-            self.alive = False
 
-class Flower(Plant): # Класс "цветок".
+class Flower(Plant): # Подкласс "цветок".
     pass
 
 
-class Fruit(Plant): # Класс "фрукт".
+class Fruit(Plant): # Подкласс "фрукт".
     edible = True
 
 
