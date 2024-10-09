@@ -8,7 +8,7 @@ class Horse:                            # Класс "лошадь".
     def __init__(self):
         self.x_distance = 0  # Пройденный путь.
         self.sound = 'Frrr'  # Pвук, который издаёт лошадь.
-        super().__init__() # Орёл в цепочке наследования правее лошади, т.е. вызываем "орла" из "лошади".
+        #super().__init__() # Орёл в цепочке наследования правее лошади, т.е. вызываем "орла" из "лошади".
 
     def run(self, dx):
         self.x_distance += dx
@@ -32,7 +32,9 @@ class Pegasus(Horse, Eagle):
         return object.__new__(cls)
 
     def __init__(self):
-        super().__init__() # Вызываем напрямую только "лошадь".
+        #super().__init__() # Вызываем напрямую только "лошадь".
+        Horse.__init__(self)
+        Eagle.__init__(self)
 
     def move(self, dx, dy):
         super().run(dx)
