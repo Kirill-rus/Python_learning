@@ -24,7 +24,7 @@ def calculate_average(numbers):  # Вычисление среднего ари�
     total_sum = collection_data[0]
     total_count = 0
 
-    #print('\nВсего элементов нечислового типа в массиве.', collection_data[1])
+    #print('\nВсего элементов нечислового типа в массиве:', collection_data[1])
 
     try:
         total_count = len(numbers) - collection_data[1]
