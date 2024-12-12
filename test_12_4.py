@@ -4,6 +4,15 @@ import runner_12_4
 import unittest
 import logging
 
+logging.basicConfig(
+    level=logging.DEBUG,  # Уровень логирования
+    format='%(asctime)s - %(levelname)s - %(message)s',  # Формат записи
+    handlers=[
+        logging.FileHandler('runner_tests.txt', mode='w', encoding='utf-8'),  # Обработчик для записи в файл
+        logging.StreamHandler()  # Обработчик для вывода в консоль
+    ]
+)
+
 
 class RunnerTest(unittest.TestCase):
 
@@ -50,11 +59,4 @@ class RunnerTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-    logging.basicConfig(
-        level=logging.DEBUG,  # Уровень логирования
-        format='%(asctime)s - %(levelname)s - %(message)s',  # Формат записи
-        handlers=[
-            logging.FileHandler('runner_tests.txt', mode='w', encoding='utf-8'),  # Обработчик для записи в файл
-            logging.StreamHandler()  # Обработчик для вывода в консоль
-        ]
-    )
+
