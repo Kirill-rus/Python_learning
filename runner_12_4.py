@@ -3,6 +3,10 @@ class Runner:
         self.name = name
         self.distance = 0
         self.speed = speed
+        if type(self.name) != str:
+            raise custom_exception('Имя не является строкой!')
+        if self.speed < 0:
+            raise custom_exception_2('Скорость отрицательная!')
 
     def run(self):
         self.distance += self.speed * 2
