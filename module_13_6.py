@@ -36,10 +36,12 @@ async def get_formulas(call):
 @dp.message_handler(commands = ['start'])
 async def start_message(message):
     print('Привет! Я бот помогающий твоему здоровью.')
-    kb_b = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
-    button_1_b = KeyboardButton(text='Рассчитать') # Добавил кнопку, чтобы не вводить слово вручную.
-    kb_b.add(button_1_b)
+    kb_b = ReplyKeyboardMarkup(resize_keyboard=True) #, one_time_keyboard=True)
+    button_1_b = KeyboardButton(text='Рассчитать')
+    button_2_b= KeyboardButton(text='Информация')
+    kb_b.row(button_1_b, button_2_b) # Расположение кнопок горизонтально (согласно картинке задания).
     await message.reply('Привет! Я бот помогающий твоему здоровью.', reply_markup=kb_b)
+
 
 @dp.callback_query_handler(text = ['info'])
 async def info(call):
@@ -82,6 +84,11 @@ async def send_calories(message, state):
     data['calories'] = (10 * float(data['weight'])) + (6.25 * float(data['growth'])) - (5 * float(data['age'])) + 5
     await message.answer(f'Ваша норма калорий: {data["calories"]}.')
     await state.finish()                           # Завершение работы машины состояний.
+
+@dp.message_handler()
+async def all_messages(message):
+    print('Введите команду /start, чтобы начать общение.')
+    await message.answer('Введите команду /start, чтобы начать общение.')
 
 
 if __name__ == '__main__':
