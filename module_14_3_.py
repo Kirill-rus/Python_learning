@@ -104,7 +104,7 @@ async def get_buying_list(message):
                                  f'{product_number * 100}')
             await message.answer_photo(img)
     await message.answer('Выберите продукт для покупки:', reply_markup = kb_i_2)
-    await answer()
+    await message.answer()
 
 @dp.callback_query_handler(text = ['product_buying']) # Команда покупки продукта.
 async def send_confirm_message(call):
