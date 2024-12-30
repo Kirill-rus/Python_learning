@@ -11,7 +11,7 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import asyncio
 
 # Подключение к Telegram:
-api = '7869762106:AAFlzdYYBzbMy2qb4fQZLyDbVX21Bb4IyLU'
+api = 'dummy'
 bot = Bot(token = api)
 dp = Dispatcher(bot, storage = MemoryStorage())
 
